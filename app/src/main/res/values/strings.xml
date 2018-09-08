@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Facilities</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="cancel">Cancel</string>
+    <string name="connection_error">Connection Error</string>
 </resources>
