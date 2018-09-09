@@ -1,6 +1,7 @@
 package facilities.samir.andrew.facilities.activities;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +24,7 @@ import com.mobsandgeeks.saripaar.annotation.Email;
 import com.mobsandgeeks.saripaar.annotation.Length;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import com.mobsandgeeks.saripaar.annotation.Password;
+import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.Calendar;
 import java.util.List;
@@ -29,10 +32,13 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import developer.mokadim.projectmate.dialog.IndicatorStyle;
+import developer.mokadim.projectmate.dialog.ProgressDialog;
 import facilities.samir.andrew.facilities.FirebaseHandler.HandleAddDataToFirebase;
 import facilities.samir.andrew.facilities.R;
 import facilities.samir.andrew.facilities.interfaces.InterfaceAddDataToFirebase;
-import facilities.samir.andrew.facilities.models.RegisterationData;
+import facilities.samir.andrew.facilities.models.ProfileData;
+import facilities.samir.andrew.facilities.models.RegestrationData;
 
 public class RegisterActivity extends Activity implements Validator.ValidationListener, InterfaceAddDataToFirebase {
 
@@ -73,6 +79,7 @@ public class RegisterActivity extends Activity implements Validator.ValidationLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        getActionBar().hide();
 
         ButterKnife.bind(this);
         mAuth = FirebaseAuth.getInstance();
@@ -92,14 +99,15 @@ public class RegisterActivity extends Activity implements Validator.ValidationLi
 
     @OnClick(R.id.tvHaveAccountRegister)
     public void onClickTvHaveAccountRegister() {
-        // TODO submit data to server...
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 
-      @OnClick(R.id.edtBirthdate)
-          public void onClickedtBirthdate() {
+    @OnClick(R.id.edtBirthdate)
+    public void onClickedtBirthdate() {
         edtBirthDate.setError(null);
-          createDialog();
-          }
+        createDialog();
+    }
     //endregion
 
     //region validation
@@ -117,8 +125,8 @@ public class RegisterActivity extends Activity implements Validator.ValidationLi
             // Display error messages ;)
             if (view instanceof EditText) {
                 ((EditText) view).setError(message);
-            }else {
-                ((TextView)view).setError("Required Field");
+            } else {
+                ((TextView) view).setError("Required Field");
             }
         }
 
@@ -134,27 +142,42 @@ public class RegisterActivity extends Activity implements Validator.ValidationLi
         //  showProgressDialog();
 
         // [START create_user_with_email]
+        Dialog progressDialog = new ProgressDialog(this, IndicatorStyle.BallBeat).show();
+        progressDialog.show();
+
         mAuth.createUserWithEmailAndPassword(edtMailRegister.getText().toString(), edtPasswordRegister.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //set data to database
-                        final RegisterationData registerationData = new RegisterationData();
-                        registerationData.setDisplayName(edtNameRegister.getText().toString());
-                        registerationData.setMail(edtMailRegister.getText().toString());
-                        registerationData.setMobile(edtPhoneRegister.getText().toString());
-                        registerationData.setBirthDate(edtBirthDate.getText().toString());
 
-                        HandleAddDataToFirebase.getInstance(RegisterActivity.this).callAddProfileData("callAddProfileData", registerationData);
+                        RegestrationData regestrationData = new RegestrationData();
+
+                        ProfileData profileData = new ProfileData();
+                        profileData.setDisplayName(edtNameRegister.getText().toString());
+                        profileData.setMail(edtMailRegister.getText().toString());
+                        profileData.setMobile(edtPhoneRegister.getText().toString());
+                        profileData.setBirthDate(edtBirthDate.getText().toString());
+
+                        regestrationData.setProfileData(profileData);
+                        HandleAddDataToFirebase.getInstance(RegisterActivity.this).callAddProfileData("callAddProfileData", regestrationData);
 
                     }
-                });
+                }).addOnFailureListener(this, new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+            }
+        });
+        progressDialog.dismiss();
         // [END create_user_with_email]
     }
 
     @Override
     public void onDataAddedSuccess(String flag) {
-        Log.d("ttt","s");
+
+        Intent goToHome = new Intent(RegisterActivity.this, MainActivity.class);
+        startActivity(goToHome);
+        finish();
     }
 
     @Override
@@ -171,9 +194,9 @@ public class RegisterActivity extends Activity implements Validator.ValidationLi
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.custom_date_paker);
 
-        final DatePicker datePicker =  dialog.findViewById(R.id.datePicker2);
+        final DatePicker datePicker = dialog.findViewById(R.id.datePicker2);
 
-        Button cancel =  dialog.findViewById(R.id.cancelAbsent);
+        Button cancel = dialog.findViewById(R.id.cancelAbsent);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -181,7 +204,7 @@ public class RegisterActivity extends Activity implements Validator.ValidationLi
             }
         });
 
-        Button continueButton =  dialog.findViewById(R.id.conToAbsent);
+        Button continueButton = dialog.findViewById(R.id.conToAbsent);
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

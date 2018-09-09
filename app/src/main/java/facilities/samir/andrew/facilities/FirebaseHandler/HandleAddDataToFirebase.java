@@ -7,8 +7,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import developer.mokadim.projectmate.dialog.IndicatorStyle;
+import developer.mokadim.projectmate.dialog.ProgressDialog;
 import facilities.samir.andrew.facilities.interfaces.InterfaceAddDataToFirebase;
-import facilities.samir.andrew.facilities.models.RegisterationData;
+import facilities.samir.andrew.facilities.models.ProfileData;
+import facilities.samir.andrew.facilities.models.RegestrationData;
 
 public class HandleAddDataToFirebase {
     private static Context context;
@@ -34,13 +37,13 @@ public class HandleAddDataToFirebase {
     }
 
 
-    public void callAddProfileData(final String flag, RegisterationData registerationData) {
-      //  final Dialog progressDialog = new ProgressDialog(context, IndicatorStyle.BallBeat).show();
-        //progressDialog.show();
+    public void callAddProfileData(final String flag, RegestrationData profileData) {
+        final Dialog progressDialog = new ProgressDialog(context, IndicatorStyle.BallBeat).show();
+        progressDialog.show();
 
-            DatabaseReference myRefJobs = myRef.child("patients");
+            DatabaseReference myRefJobs = myRef.child("Facilities").child("Users");
 
-            myRefJobs.push().setValue(registerationData, new DatabaseReference.CompletionListener() {
+            myRefJobs.push().setValue(profileData, new DatabaseReference.CompletionListener() {
                 public void onComplete(DatabaseError error, DatabaseReference ref) {
 
                     if (error == null) {
@@ -49,7 +52,7 @@ public class HandleAddDataToFirebase {
                         clickListener.onDataAddedFailed(flag);
                     }
 
-                    //progressDialog.dismiss();
+                    progressDialog.dismiss();
                 }
             });
         }

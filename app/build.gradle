@@ -33,11 +33,11 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.sdsmdg.tastytoast:tastytoast:0.1.0'
     implementation 'com.intuit.sdp:sdp-android:1.0.4'
-//    implementation 'com.github.kickstartinteractiveandroidteam:KsiProjectMate:v1.1'
+    implementation 'com.github.kickstartinteractiveandroidteam:KsiProjectMate:v1.1'
     implementation 'com.afollestad.material-dialogs:core:0.9.4.1'
 
     //validation
-    compile 'com.mobsandgeeks:android-saripaar:2.0.3'
+    implementation 'com.mobsandgeeks:android-saripaar:2.0.3'
 
 
 }

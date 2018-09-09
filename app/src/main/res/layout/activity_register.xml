@@ -118,7 +118,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="35dp"
                 android:background="@drawable/button_background_login"
-                android:elevation="40dp"
+                android:elevation="10dp"
                 android:text="Register"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"

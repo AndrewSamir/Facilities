@@ -6,7 +6,7 @@ package facilities.samir.andrew.facilities.models;
  */
 
 
-public class RegisterationData {
+public class ProfileData {
 
     public String displayName;
     public String email;
@@ -19,7 +19,7 @@ public class RegisterationData {
     }
 
 
-    public RegisterationData() {
+    public ProfileData() {
     }
 
     public void setDisplayName(String name) {
