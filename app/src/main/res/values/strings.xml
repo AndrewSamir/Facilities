@@ -5,4 +5,9 @@
     <string name="cancel">Cancel</string>
     <string name="connection_error">Connection Error</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="agree">OK</string>
+    <string name="no">NO</string>
+    <string name="send_to">Send To</string>
+    <string name="success">success</string>
+    <string name="internet_connection">Internet Connection Error</string>
 </resources>

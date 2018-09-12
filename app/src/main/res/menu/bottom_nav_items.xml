@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/bottomItem_feeds"
+        android:icon="@drawable/capture"
+        android:title="sdf" />
+
+    <item
+        android:id="@+id/bottomItem_poems"
+        android:icon="@drawable/capture"
+        android:title="cxvcxv" />
+
+    <item
+        android:id="@+id/bottomItem_search"
+        android:icon="@drawable/capture"
+        android:title="xcvcx" />
+
+    <item
+        android:id="@+id/bottomItem_chat"
+        android:icon="@drawable/capture"
+        android:title="xcvcx" />
+
+    <item
+        android:id="@+id/bottomItem_more"
+        android:icon="@drawable/capture"
+        android:title="ad" />
+
+</menu>
