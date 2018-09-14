@@ -62,11 +62,13 @@ public abstract class BaseFragment extends Fragment
     public void onResume()
     {
         super.onResume();
+/*
 
         if (getTitle() != null)
             setTitle(getTitle());
         else
             setTitle("");
+*/
 
 
         if (canShowAppHeader())
@@ -85,8 +87,8 @@ public abstract class BaseFragment extends Fragment
             getBaseActivity().getBottomNavigationView().setVisibility(View.GONE);
         }
 
-        appHeader.setBackArrow(canShowBackArrow());
-        setBackAction();
+//        appHeader.setBackArrow(canShowBackArrow());
+//        setBackAction();
     }
 
 
@@ -190,7 +192,7 @@ public abstract class BaseFragment extends Fragment
         return qBadgeView;
     }
 //endregion
-
+/*
     //region header helpers
     public void setTitle(@StringRes int textRes)
     {
@@ -231,7 +233,7 @@ public abstract class BaseFragment extends Fragment
 
 
 //endregion
-
+*/
     //region bottom navigation type
     //Those are used to select the correct bottom button
 
@@ -268,7 +270,7 @@ public abstract class BaseFragment extends Fragment
         bottomNavigationView.getMenu().findItem(actionId).setChecked(true);
 
     }
-
+/*
     private void setBackAction()
     {
         if (appHeader != null)
@@ -289,7 +291,7 @@ public abstract class BaseFragment extends Fragment
 
 
     }
-
+*/
     public void hideSoftKeyboard()
     {
         if (getBaseActivity().getCurrentFocus() != null)

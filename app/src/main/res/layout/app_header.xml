@@ -1,96 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
+    android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/colorWhite"
     app:cardElevation="@dimen/_7sdp">
 
-    <RelativeLayout
-        android:id="@+id/appHeader_container"
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:orientation="vertical"
-        android:visibility="visible">
-
-        <!--end part-->
-        <LinearLayout
-            android:id="@+id/appHeader_rightContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/_5sdp"
-            android:gravity="center"
-            android:visibility="visible"
-            tools:ignore="RtlHardcoded">
-
-
-            <ImageView
-                android:id="@+id/appHeader_img_right"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_margin="@dimen/_3sdp"
-                android:visibility="gone"
-                app:srcCompat="@mipmap/ic_launcher" />
-
-            <ImageView
-                android:id="@+id/appHeader_img_right_second"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_margin="@dimen/_3sdp"
-                android:visibility="gone"
-                app:srcCompat="@mipmap/ic_launcher" />
-
-            <sha3er.sa.revival.sha3er.customViews.CustomTextView
-                android:id="@+id/appHeader_txt_right"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginEnd="@dimen/_4sdp"
-                android:gravity="center"
-                android:textColor="@color/colorHeaderRightText"
-                android:textSize="@dimen/mediumTextSize"
-                android:visibility="gone"
-                tools:text="right text" />
-        </LinearLayout>
-
-        <!--start part-->
-        <LinearLayout
-            android:id="@+id/appHeader_leftContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:gravity="center"
-            tools:ignore="RtlHardcoded">
-
-            <ImageView
-                android:id="@+id/appHeader_img_left"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:visibility="gone"
-                app:srcCompat="@id/appHeader_img_left" />
-
-        </LinearLayout>
-
-        <!--center part-->
-        <sha3er.sa.revival.sha3er.customViews.CustomTextView
-            android:id="@+id/appHeader_txt_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:gravity="center"
-            android:textColor="@color/colorHeaderCenterText"
-            android:textStyle="bold"
-            android:visibility="visible"
-            tools:text="This is the title" />
-
-    </RelativeLayout>
-
-</android.support.v7.widget.CardView>
+        android:text="dfm,fndfmn,fd,mdfcvxnxc"
+        android:layout_marginTop="@dimen/_200sdp"
+        android:textSize="@dimen/_50sdp"
+        android:textColor="#000"
+        android:layout_height="wrap_content" />
+</LinearLayout>

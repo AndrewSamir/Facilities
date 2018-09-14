@@ -17,10 +17,10 @@ import facilities.samir.andrew.facilities.R;
 
 public class AppHeader extends CardView
 {
-    private ImageView appHeader_img_right, appHeader_img_right_second, appHeader_img_left;
+/*    private ImageView appHeader_img_right, appHeader_img_right_second, appHeader_img_left;
     private TextView txt_right;
     private TextView txt_title;
-    private RelativeLayout container;
+    private RelativeLayout container;*/
 
 
     //region constructor
@@ -46,26 +46,26 @@ public class AppHeader extends CardView
     {
         LayoutInflater.from(context).inflate(R.layout.app_header, this, true);
 
-        txt_right = findViewById(R.id.appHeader_txt_right);
-        appHeader_img_right_second = findViewById(R.id.appHeader_img_right_second);
-        txt_title = findViewById(R.id.appHeader_txt_title);
-
-        appHeader_img_right = findViewById(R.id.appHeader_img_right);
-        appHeader_img_left = findViewById(R.id.appHeader_img_left);
-
-        container = findViewById(R.id.appHeader_container);
+//        txt_right = findViewById(R.id.appHeader_txt_right);
+//        appHeader_img_right_second = findViewById(R.id.appHeader_img_right_second);
+//        txt_title = findViewById(R.id.appHeader_txt_title);
+//
+//        appHeader_img_right = findViewById(R.id.appHeader_img_right);
+//        appHeader_img_left = findViewById(R.id.appHeader_img_left);
+//
+//        container = findViewById(R.id.appHeader_container);
 
 
 //        linearAppHeaderLine = findViewById(R.id.linearAppHeaderLine);
     }
     //endregion
 
-    //region right container helpers
+ /*   //region right container helpers
 
-    /**
+    *//**
      * @param textRes  Send 0 value to hide it
      * @param imageRes Send 0 value to hide it
-     */
+     *//*
     public void setRight(@StringRes int textRes, @DrawableRes int imageRes, @DrawableRes int imageRes_2)
     {
         if (textRes == 0 && imageRes == 0 && imageRes_2 == 0)
@@ -147,10 +147,10 @@ public class AppHeader extends CardView
 
     public void setLineVisibality(Boolean isVisible)
     {
-       /* if (isVisible)
+       *//* if (isVisible)
             linearAppHeaderLine.setVisibility(VISIBLE);
         else
-            linearAppHeaderLine.setVisibility(GONE);*/
+            linearAppHeaderLine.setVisibility(GONE);*//*
     }
 
     @Override
@@ -164,6 +164,6 @@ public class AppHeader extends CardView
     public void setDefaultBackground()
     {
         setBackgroundResource(R.color.colorWhite);
-    }
+    }*/
 
 }

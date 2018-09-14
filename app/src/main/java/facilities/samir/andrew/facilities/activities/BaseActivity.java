@@ -29,6 +29,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.mlsdev.rximagepicker.RxImagePicker;
 import com.mlsdev.rximagepicker.Sources;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.subjects.PublishSubject;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends RxAppCompatActivity {
     //region variables
     public final String content_Fragment = "Content_Fragment";
     protected String TAG;

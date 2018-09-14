@@ -5,12 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <sha3er.sa.revival.sha3er.customViews.AppHeader
+    <facilities.samir.andrew.facilities.customViews.AppHeader
         android:id="@+id/appHeader"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        app:ah_backgroundColor="@color/colorWhite" />
+        android:layout_alignParentTop="true" />
 
 
     <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
