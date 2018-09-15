@@ -1,4 +1,4 @@
-package facilities.samir.andrew.facilities;
+package facilities.samir.andrew.facilities.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,6 +13,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import facilities.samir.andrew.facilities.R;
 
 public class SlidingImageAdapter extends PagerAdapter {
 

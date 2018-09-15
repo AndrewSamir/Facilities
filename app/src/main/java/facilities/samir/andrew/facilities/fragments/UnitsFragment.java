@@ -1,9 +1,9 @@
 package facilities.samir.andrew.facilities.fragments;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,37 +11,35 @@ import android.view.ViewGroup;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import facilities.samir.andrew.facilities.FirebaseHandler.HandleGetDataFromFirebase;
 import facilities.samir.andrew.facilities.R;
-import facilities.samir.andrew.facilities.adapter.SlidingImageAdapter;
+import facilities.samir.andrew.facilities.adapter.AdapterUnits;
 import facilities.samir.andrew.facilities.interfaces.HandleRetrofitResp;
 import facilities.samir.andrew.facilities.interfaces.InterfaceGetDataFromFirebase;
+import facilities.samir.andrew.facilities.models.UnittDetails.UnitDetailsModel;
+import facilities.samir.andrew.facilities.models.UnittDetails.UnitPayment;
+import facilities.samir.andrew.facilities.models.UnittDetails.unitDetails;
 import facilities.samir.andrew.facilities.retorfitconfig.HandleCalls;
 
-public class HomeFragment extends BaseFragment implements HandleRetrofitResp, InterfaceGetDataFromFirebase {
+public class UnitsFragment extends BaseFragment implements HandleRetrofitResp, InterfaceGetDataFromFirebase {
 
     //region fields
-    private static int currentPage = 0;
-    private static int NUM_PAGES = 0;
-    List<String> imagesArray;
+    AdapterUnits adapterUnits;
+    List<UnitDetailsModel> unitDetailsModelList;
+    List<UnitPayment> unitPaymentList;
+
     //endregion
 
     //region views
 
-    @BindView(R.id.mpager)
-    ViewPager mPager;
-
-    @BindView(R.id.indicator)
-    CirclePageIndicator indicator;
+    @BindView(R.id.rvUnits)
+    RecyclerView rvUnits;
     //endregion
 
     //region life cycle
@@ -50,17 +48,23 @@ public class HomeFragment extends BaseFragment implements HandleRetrofitResp, In
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        final View view = inflater.inflate(R.layout.home_fragment, container, false);
+        final View view = inflater.inflate(R.layout.units_fragment, container, false);
 
         unbinder = ButterKnife.bind(this, view);
 
-        imagesArray = new ArrayList<>();
-
+        unitDetailsModelList = new ArrayList<>();
+        unitPaymentList = new ArrayList<>();
+        adapterUnits = new AdapterUnits(unitDetailsModelList, getBaseActivity());
+        rvUnits.setLayoutManager(new GridLayoutManager(getBaseActivity(), 1));
+        rvUnits.setAdapter(adapterUnits);
         HandleGetDataFromFirebase.getInstance(getBaseActivity()).setGetDataFromFirebaseInterface(this);
+
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        HandleGetDataFromFirebase.getInstance(getBaseActivity()).callGet("getImages", databaseReference
+
+        HandleGetDataFromFirebase.getInstance(getBaseActivity()).callGet("getAllUnits", databaseReference
                 .child("Facilities")
-                .child("SlidingImages"));
+                .child("Units"));
+
         return view;
     }
 
@@ -68,7 +72,6 @@ public class HomeFragment extends BaseFragment implements HandleRetrofitResp, In
     public void onResume() {
         super.onResume();
         HandleCalls.getInstance(getBaseActivity()).setonRespnseSucess(this);
-
     }
 
     @Override
@@ -127,11 +130,13 @@ public class HomeFragment extends BaseFragment implements HandleRetrofitResp, In
     public void onGetDataFromFirebase(DataSnapshot dataSnapshot, String flag) {
 
         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-
-            imagesArray.add(snapshot.getValue().toString());
-
+            UnitDetailsModel unitDetailsModel = snapshot.getValue(UnitDetailsModel.class);
+            for (DataSnapshot snap : snapshot.child("UnitPayment").getChildren()) {
+                unitPaymentList.add(snap.getValue(UnitPayment.class));
+            }
+            unitDetailsModel.setUnitPayment(unitPaymentList);
+            adapterUnits.addItem(unitDetailsModel);
         }
-        initSlidiningImages();
     }
     //endregion
 
@@ -146,61 +151,8 @@ public class HomeFragment extends BaseFragment implements HandleRetrofitResp, In
 
     //region functions
 
-    public static HomeFragment init() {
-        return new HomeFragment();
-    }
-
-    private void initSlidiningImages() {
-
-        mPager.setAdapter(new SlidingImageAdapter(getBaseActivity(), imagesArray));
-
-        indicator.setViewPager(mPager);
-
-        final float density = getResources().getDisplayMetrics().density;
-
-//Set circle indicator radius
-        indicator.setRadius(5 * density);
-
-        NUM_PAGES = imagesArray.size();
-
-        // Auto start of viewpager
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == NUM_PAGES) {
-                    currentPage = 0;
-                }
-                mPager.setCurrentItem(currentPage++, true);
-            }
-        };
-        Timer swipeTimer = new Timer();
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 3000, 3000);
-
-        // Pager listener over indicator
-        indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-                currentPage = position;
-
-            }
-
-            @Override
-            public void onPageScrolled(int pos, float arg1, int arg2) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int pos) {
-
-            }
-        });
-
+    public static UnitsFragment init() {
+        return new UnitsFragment();
     }
 
 

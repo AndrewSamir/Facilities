@@ -16,6 +16,7 @@ import android.view.View;
 import facilities.samir.andrew.facilities.R;
 import facilities.samir.andrew.facilities.fragments.BaseFragment;
 import facilities.samir.andrew.facilities.fragments.HomeFragment;
+import facilities.samir.andrew.facilities.fragments.UnitsFragment;
 import facilities.samir.andrew.facilities.interfaces.HandleRetrofitResp;
 import q.rorbin.badgeview.Badge;
 import q.rorbin.badgeview.QBadgeView;
@@ -31,7 +32,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //        appHeader.setBackgroundResource(R.color.colorPrimary);
         initBottomBar();
 
-        addContentFragment(HomeFragment.init(), false);
+        addContentFragment(UnitsFragment.init(), false);
      /*   if (SharedPrefHelper.getInstance(this).getAccessToken() == null)
             addContentFragment(new IntroFragment(), false);
         else

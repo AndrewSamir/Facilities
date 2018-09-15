@@ -10,4 +10,10 @@
     <string name="send_to">Send To</string>
     <string name="success">success</string>
     <string name="internet_connection">Internet Connection Error</string>
+    <string name="payment_type">Payment Type</string>
+    <string name="installment_amount">Installment Amount</string>
+    <string name="due_date">Due Date</string>
+    <string name="status">status</string>
+    <string name="paid_amount">Paid Amount</string>
+    <string name="date_of_payment">Date Of Payment</string>
 </resources>

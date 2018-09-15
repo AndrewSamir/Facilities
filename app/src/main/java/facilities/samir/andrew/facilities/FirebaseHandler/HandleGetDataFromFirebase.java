@@ -16,6 +16,8 @@ import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.ArrayList;
 
+import developer.mokadim.projectmate.dialog.IndicatorStyle;
+import developer.mokadim.projectmate.dialog.ProgressDialog;
 import facilities.samir.andrew.facilities.R;
 import facilities.samir.andrew.facilities.interfaces.InterfaceDailogClicked;
 import facilities.samir.andrew.facilities.interfaces.InterfaceGetDataFromFirebase;
@@ -53,8 +55,8 @@ public class HandleGetDataFromFirebase {
 
 
     public void callGet(final String flag, DatabaseReference databaseReference) {
-   //     final Dialog progressDialog = new ProgressDialog(context, IndicatorStyle.BallZigZag).show();
-     //   progressDialog.show();
+        final Dialog progressDialog = new ProgressDialog(context, IndicatorStyle.BallZigZag).show();
+        progressDialog.show();
 
         //            DatabaseReference myRefJobs = myRef.child(context.getString(R.string.firebase_services));
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -62,7 +64,7 @@ public class HandleGetDataFromFirebase {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 clickListener.onGetDataFromFirebase(dataSnapshot, flag);
                 Log.d("firebase", dataSnapshot.toString());
-                //progressDialog.dismiss();
+                progressDialog.dismiss();
             }
 
             @Override
@@ -70,7 +72,7 @@ public class HandleGetDataFromFirebase {
                 Log.d("firebase error", error.toString());
 
                 TastyToast.makeText(context, context.getString(R.string.connection_error), TastyToast.LENGTH_SHORT, TastyToast.ERROR);
-             //   progressDialog.dismiss();
+                progressDialog.dismiss();
             }
         });
     }
