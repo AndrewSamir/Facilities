@@ -63,6 +63,7 @@ public class UnitDetailsFragment extends BaseFragment implements HandleRetrofitR
 
         unbinder = ButterKnife.bind(this, view);
         adjustViews();
+        appHeader.setTitle(unitDetailsModel.getUnitDetails().getUnitCode());
         csvUnitDetails.setOnSegmentChangedListener(this);
         return view;
     }
@@ -84,17 +85,17 @@ public class UnitDetailsFragment extends BaseFragment implements HandleRetrofitR
     //region parent methods
     @Override
     protected boolean canShowAppHeader() {
-        return false;
+        return true;
     }
 
     @Override
     protected boolean canShowBottomBar() {
-        return false;
+        return true;
     }
 
     @Override
     protected boolean canShowBackArrow() {
-        return false;
+        return true;
     }
 
     @Override
@@ -104,7 +105,7 @@ public class UnitDetailsFragment extends BaseFragment implements HandleRetrofitR
 
     @Override
     public int getSelectedMenuId() {
-        return 0;
+        return R.id.bottomItem_units;
     }
 
     //endregion
@@ -159,7 +160,7 @@ public class UnitDetailsFragment extends BaseFragment implements HandleRetrofitR
         tvUnitTotalPriceFragmentUnitDetails.setText(unitDetailsModel.getUnitDetails().getUnitTotalPrice() + "");
         tvUnitTypeFragmentUnitDetails.setText(unitDetailsModel.getUnitDetails().getUnitType());
 
-        if(unitDetailsModel.getUnitPayment()!=null) {
+        if (unitDetailsModel.getUnitPayment() != null) {
             paymentAdapter = new PaymentAdapter(unitDetailsModel.getUnitPayment());
             rvUnitDetailsPayment.setLayoutManager(new LinearLayoutManager(getBaseActivity()));
             rvUnitDetailsPayment.setAdapter(paymentAdapter);

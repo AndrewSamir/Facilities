@@ -2,28 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <item
-        android:id="@+id/bottomItem_feeds"
+        android:id="@+id/bottomItem_home"
         android:icon="@drawable/capture"
-        android:title="sdf" />
+        android:title="@string/home" />
 
     <item
-        android:id="@+id/bottomItem_poems"
+        android:id="@+id/bottomItem_units"
         android:icon="@drawable/capture"
-        android:title="cxvcxv" />
+        android:title="@string/units" />
 
     <item
-        android:id="@+id/bottomItem_search"
+        android:id="@+id/bottomItem_notifications"
         android:icon="@drawable/capture"
-        android:title="xcvcx" />
+        android:title="@string/notifications" />
 
     <item
-        android:id="@+id/bottomItem_chat"
+        android:id="@+id/bottomItem_settings"
         android:icon="@drawable/capture"
-        android:title="xcvcx" />
-
-    <item
-        android:id="@+id/bottomItem_more"
-        android:icon="@drawable/capture"
-        android:title="ad" />
+        android:title="@string/settings" />
 
 </menu>

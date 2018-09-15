@@ -3,7 +3,6 @@ package facilities.samir.andrew.facilities.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -62,13 +61,11 @@ public abstract class BaseFragment extends Fragment
     public void onResume()
     {
         super.onResume();
-/*
 
         if (getTitle() != null)
             setTitle(getTitle());
-        else
-            setTitle("");
-*/
+       /* else
+            setTitle("");*/
 
 
         if (canShowAppHeader())
@@ -87,8 +84,8 @@ public abstract class BaseFragment extends Fragment
             getBaseActivity().getBottomNavigationView().setVisibility(View.GONE);
         }
 
-//        appHeader.setBackArrow(canShowBackArrow());
-//        setBackAction();
+        appHeader.setBackArrow(canShowBackArrow());
+        setBackAction();
     }
 
 
@@ -192,7 +189,7 @@ public abstract class BaseFragment extends Fragment
         return qBadgeView;
     }
 //endregion
-/*
+
     //region header helpers
     public void setTitle(@StringRes int textRes)
     {
@@ -204,7 +201,7 @@ public abstract class BaseFragment extends Fragment
         appHeader.setTitle(text);
     }
 
-
+/*
     protected void setHeaderLeft(@DrawableRes int imageRes)
     {
         appHeader.setLeft(imageRes);
@@ -243,9 +240,9 @@ public abstract class BaseFragment extends Fragment
      * {@link #BOTTOM_NAVIGATION_MY_ACCOUNT}
      */
 
-    protected final int BOTTOM_NAVIGATION_MY_RESERVATIONS = R.id.bottomItem_feeds;
-    protected final int BOTTOM_NAVIGATION_PERIODS = R.id.bottomItem_poems;
-    protected final int BOTTOM_NAVIGATION_MY_ACCOUNT = R.id.bottomItem_poems;
+    protected final int BOTTOM_NAVIGATION_MY_RESERVATIONS = R.id.bottomItem_home;
+    protected final int BOTTOM_NAVIGATION_PERIODS = R.id.bottomItem_units;
+    protected final int BOTTOM_NAVIGATION_MY_ACCOUNT = R.id.bottomItem_units;
 //endregion
 
     //region helper functions
@@ -270,12 +267,11 @@ public abstract class BaseFragment extends Fragment
         bottomNavigationView.getMenu().findItem(actionId).setChecked(true);
 
     }
-/*
     private void setBackAction()
     {
         if (appHeader != null)
         {
-            appHeader.setLeftClickListener(new View.OnClickListener()
+            appHeader.setBackClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View view)
@@ -291,7 +287,6 @@ public abstract class BaseFragment extends Fragment
 
 
     }
-*/
     public void hideSoftKeyboard()
     {
         if (getBaseActivity().getCurrentFocus() != null)

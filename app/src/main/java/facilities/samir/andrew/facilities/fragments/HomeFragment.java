@@ -82,12 +82,12 @@ public class HomeFragment extends BaseFragment implements HandleRetrofitResp, In
     //region parent methods
     @Override
     protected boolean canShowAppHeader() {
-        return false;
+        return true;
     }
 
     @Override
     protected boolean canShowBottomBar() {
-        return false;
+        return true;
     }
 
     @Override
@@ -97,12 +97,12 @@ public class HomeFragment extends BaseFragment implements HandleRetrofitResp, In
 
     @Override
     protected String getTitle() {
-        return null;
+        return getString(R.string.home);
     }
 
     @Override
     public int getSelectedMenuId() {
-        return 0;
+        return R.id.bottomItem_home;
     }
 
     //endregion

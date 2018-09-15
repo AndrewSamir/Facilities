@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -63,6 +65,8 @@ public class UnitsFragment extends BaseFragment implements HandleRetrofitResp, I
 
         HandleGetDataFromFirebase.getInstance(getBaseActivity()).callGet("getAllUnits", databaseReference
                 .child("Facilities")
+                .child("Users")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .child("Units"));
 
         return view;
@@ -85,12 +89,12 @@ public class UnitsFragment extends BaseFragment implements HandleRetrofitResp, I
     //region parent methods
     @Override
     protected boolean canShowAppHeader() {
-        return false;
+        return true;
     }
 
     @Override
     protected boolean canShowBottomBar() {
-        return false;
+        return true;
     }
 
     @Override
@@ -100,12 +104,12 @@ public class UnitsFragment extends BaseFragment implements HandleRetrofitResp, I
 
     @Override
     protected String getTitle() {
-        return null;
+        return getString(R.string.units);
     }
 
     @Override
     public int getSelectedMenuId() {
-        return 0;
+        return R.id.bottomItem_units;
     }
 
     //endregion

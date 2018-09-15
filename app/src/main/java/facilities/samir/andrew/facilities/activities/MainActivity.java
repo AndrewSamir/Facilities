@@ -16,6 +16,8 @@ import android.view.View;
 import facilities.samir.andrew.facilities.R;
 import facilities.samir.andrew.facilities.fragments.BaseFragment;
 import facilities.samir.andrew.facilities.fragments.HomeFragment;
+import facilities.samir.andrew.facilities.fragments.NotificationsFragment;
+import facilities.samir.andrew.facilities.fragments.SettingsFragment;
 import facilities.samir.andrew.facilities.fragments.UnitsFragment;
 import facilities.samir.andrew.facilities.interfaces.HandleRetrofitResp;
 import q.rorbin.badgeview.Badge;
@@ -32,7 +34,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //        appHeader.setBackgroundResource(R.color.colorPrimary);
         initBottomBar();
 
-        addContentFragment(UnitsFragment.init(), false);
+        addContentFragment(HomeFragment.init(), false);
      /*   if (SharedPrefHelper.getInstance(this).getAccessToken() == null)
             addContentFragment(new IntroFragment(), false);
         else
@@ -64,16 +66,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {//open correct view when clicked
 
-                if (item.getItemId() == R.id.bottomItem_feeds) {
-//                    addContentFragment(new ReservationsFragments(), true);
-                } else if (item.getItemId() == R.id.bottomItem_poems) {
-//                    addContentFragment(new IntervalsFragment(), true);
-                } else if (item.getItemId() == R.id.bottomItem_chat) {
-//                    addContentFragment(new MyAccountFragment(), true);
-                } else if (item.getItemId() == R.id.bottomItem_search) {
-//                    addContentFragment(new MyAccountFragment(), true);
-                } else if (item.getItemId() == R.id.bottomItem_more) {
-//                    addContentFragment(new MyAccountFragment(), true);
+                if (item.getItemId() == R.id.bottomItem_home) {
+                    addContentFragment(new HomeFragment(), true);
+                } else if (item.getItemId() == R.id.bottomItem_units) {
+                    addContentFragment(new UnitsFragment(), true);
+                } else if (item.getItemId() == R.id.bottomItem_notifications) {
+                    addContentFragment(new NotificationsFragment(), true);
+                } else if (item.getItemId() == R.id.bottomItem_settings) {
+                    addContentFragment(new SettingsFragment(), true);
                 }
 
                 return true;

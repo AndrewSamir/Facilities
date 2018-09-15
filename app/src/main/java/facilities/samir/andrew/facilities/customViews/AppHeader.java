@@ -9,18 +9,15 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import facilities.samir.andrew.facilities.R;
 
-
 public class AppHeader extends CardView
 {
-/*    private ImageView appHeader_img_right, appHeader_img_right_second, appHeader_img_left;
-    private TextView txt_right;
-    private TextView txt_title;
-    private RelativeLayout container;*/
+    private ImageView imgAppHeaderBack;
+    private TextView tvAppHeaderTitle;
+
 
 
     //region constructor
@@ -46,27 +43,16 @@ public class AppHeader extends CardView
     {
         LayoutInflater.from(context).inflate(R.layout.app_header, this, true);
 
-//        txt_right = findViewById(R.id.appHeader_txt_right);
-//        appHeader_img_right_second = findViewById(R.id.appHeader_img_right_second);
-//        txt_title = findViewById(R.id.appHeader_txt_title);
-//
-//        appHeader_img_right = findViewById(R.id.appHeader_img_right);
-//        appHeader_img_left = findViewById(R.id.appHeader_img_left);
-//
-//        container = findViewById(R.id.appHeader_container);
-
-
-//        linearAppHeaderLine = findViewById(R.id.linearAppHeaderLine);
+        tvAppHeaderTitle = findViewById(R.id.tvAppHeaderTitle);
+        imgAppHeaderBack = findViewById(R.id.imgAppHeaderBack);
     }
     //endregion
 
  /*   //region right container helpers
 
-    *//**
-     * @param textRes  Send 0 value to hide it
-     * @param imageRes Send 0 value to hide it
-     *//*
-    public void setRight(@StringRes int textRes, @DrawableRes int imageRes, @DrawableRes int imageRes_2)
+    */
+
+  /*  public void setRight(@StringRes int textRes, @DrawableRes int imageRes, @DrawableRes int imageRes_2)
     {
         if (textRes == 0 && imageRes == 0 && imageRes_2 == 0)
         {
@@ -97,20 +83,25 @@ public class AppHeader extends CardView
             appHeader_img_right_second.setImageResource(imageRes_2);
         }
     }
-
+*/
     public void setRightImgClickListener(View.OnClickListener onClickListener)
     {
-        appHeader_img_right.setOnClickListener(onClickListener);
+//        appHeader_img_right.setOnClickListener(onClickListener);
     }
 
     public void setSecondRightImgClickListener(View.OnClickListener onClickListener)
     {
-        appHeader_img_right_second.setOnClickListener(onClickListener);
+//        appHeader_img_right_second.setOnClickListener(onClickListener);
     }
 
     public void setRightTxtClickListener(View.OnClickListener onClickListener)
     {
-        txt_right.setOnClickListener(onClickListener);
+//        txt_right.setOnClickListener(onClickListener);
+    }
+
+    public void setBackClickListener(View.OnClickListener onClickListener)
+    {
+        imgAppHeaderBack.setOnClickListener(onClickListener);
     }
     //endregion
 
@@ -119,51 +110,40 @@ public class AppHeader extends CardView
     public void setBackArrow(boolean showBackArrow)
     {
         if (showBackArrow)
-            appHeader_img_left.setVisibility(VISIBLE);
+            imgAppHeaderBack.setVisibility(VISIBLE);
         else
-            appHeader_img_left.setVisibility(GONE);
+            imgAppHeaderBack.setVisibility(GONE);
     }
 
-    public void setLeftClickListener(View.OnClickListener onClickListener)
-    {
-        appHeader_img_left.setOnClickListener(onClickListener);
-    }
 
     //endregion
 
     //region title
     public void setTitle(@StringRes int textRes)
     {
-        txt_title.setText(textRes);
+        tvAppHeaderTitle.setText(textRes);
     }
 
     public void setTitle(String text)
     {
-        txt_title.setText(text);
+        tvAppHeaderTitle.setText(text);
     }
 
 
     //endregion
 
-    public void setLineVisibality(Boolean isVisible)
-    {
-       *//* if (isVisible)
-            linearAppHeaderLine.setVisibility(VISIBLE);
-        else
-            linearAppHeaderLine.setVisibility(GONE);*//*
-    }
 
     @Override
     public void setBackgroundResource(@DrawableRes int resid)
     {
         super.setBackgroundResource(resid);
-        container.setBackgroundResource(resid);
+//        container.setBackgroundResource(resid);
     }
 
 
     public void setDefaultBackground()
     {
         setBackgroundResource(R.color.colorWhite);
-    }*/
+    }
 
 }
