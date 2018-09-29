@@ -20,6 +20,7 @@ import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import facilities.samir.andrew.facilities.FirebaseHandler.HandleGetDataFromFirebase;
 import facilities.samir.andrew.facilities.R;
 import facilities.samir.andrew.facilities.adapter.SlidingImageAdapter;
@@ -137,6 +138,25 @@ public class HomeFragment extends BaseFragment implements HandleRetrofitResp, In
 
     //region clicks
 
+    @OnClick(R.id.imgHomeEvent)
+    public void onClickimgHomeEvent() {
+        addFragment(EventsFragments.init(), true);
+    }
+
+    @OnClick(R.id.imgHomeServices)
+    public void onClickimgHomeServices() {
+        // TODO submit data to server...
+    }
+
+    @OnClick(R.id.imgHomeVisitor)
+    public void onClickimgHomeVisitor() {
+        addFragment(VisitorFragment.init(), true);
+    }
+
+    @OnClick(R.id.imgHomeFacility)
+    public void onClickimgHomeFacility() {
+        // TODO submit data to server...
+    }
 
     //endregion
 
