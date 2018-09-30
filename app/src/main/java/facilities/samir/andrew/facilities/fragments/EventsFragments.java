@@ -2,20 +2,30 @@ package facilities.samir.andrew.facilities.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import facilities.samir.andrew.facilities.R;
+import facilities.samir.andrew.facilities.adapter.AdapterEvents;
 import facilities.samir.andrew.facilities.interfaces.HandleRetrofitResp;
+import facilities.samir.andrew.facilities.models.ModelEvents.ModelEvents;
 import facilities.samir.andrew.facilities.retorfitconfig.HandleCalls;
 
 public class EventsFragments extends BaseFragment implements HandleRetrofitResp {
 
     //region fields
+
+    AdapterEvents adapterEvents;
+    List<ModelEvents> modelEventsList;
 
     //endregion
 
@@ -23,6 +33,7 @@ public class EventsFragments extends BaseFragment implements HandleRetrofitResp 
 
     @BindView(R.id.rvEvents)
     RecyclerView rvEvents;
+
     //endregion
 
     //region life cycle
@@ -34,6 +45,11 @@ public class EventsFragments extends BaseFragment implements HandleRetrofitResp 
         final View view = inflater.inflate(R.layout.events_fragments, container, false);
 
         unbinder = ButterKnife.bind(this, view);
+
+        modelEventsList = new ArrayList<>();
+        adapterEvents = new AdapterEvents(modelEventsList, getBaseActivity());
+        rvEvents.setLayoutManager(new LinearLayoutManager(getBaseActivity()));
+        rvEvents.setAdapter(adapterEvents);
 
         return view;
     }

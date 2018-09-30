@@ -83,6 +83,10 @@ dependencies {
     //permissions
     implementation 'com.karumi:dexter:5.0.0'
 
+    //dropdownview
+    implementation 'com.asksira.android:dropdownview:1.0.3'
+
+
 }
 
 apply plugin: 'com.google.gms.google-services'

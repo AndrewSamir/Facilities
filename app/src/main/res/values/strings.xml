@@ -21,4 +21,6 @@
     <string name="home">Home</string>
     <string name="units">Units</string>
     <string name="events">Evemts</string>
+    <string name="my_tickets">My Tickets</string>
+    <string name="add">Add Ticket</string>
 </resources>

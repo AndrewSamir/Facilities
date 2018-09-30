@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/_14sdp"
+    android:background="@null">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_background"
+        android:orientation="vertical"
+        android:padding="@dimen/_4sdp">
+
+        <com.asksira.dropdownview.DropDownView
+            android:id="@+id/dropdownview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_70sdp"
+            app:placeholder_text="Please select"
+            app:dropdownItem_text_gravity="start"
+            app:filter_bar_background_color="@android:color/holo_orange_dark"
+            app:filter_text_color="@android:color/white"
+            app:arrow_width="24dp"
+            app:dropDownItem_text_color_selected="@android:color/holo_orange_dark"
+            app:divider_color="@android:color/holo_orange_light"
+            app:dropDownItem_text_size_selected="18sp"
+            app:bottom_decorator_color="@android:color/holo_orange_dark"
+            app:bottom_decorator_height="4dp"
+            app:expansion_style="drawer"
+            app:last_item_has_divider="false"/>
+
+        <com.asksira.dropdownview.DropDownView
+            android:id="@+id/dropdownviewbv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_70sdp"
+            app:placeholder_text="Please select"
+            app:dropdownItem_text_gravity="start"
+            app:filter_bar_background_color="@android:color/holo_orange_dark"
+            app:filter_text_color="@android:color/white"
+            app:arrow_width="24dp"
+            app:dropDownItem_text_color_selected="@android:color/holo_orange_dark"
+            app:divider_color="@android:color/holo_orange_light"
+            app:dropDownItem_text_size_selected="18sp"
+            app:bottom_decorator_color="@android:color/holo_orange_dark"
+            app:bottom_decorator_height="4dp"
+            app:expansion_style="drawer"
+            app:last_item_has_divider="false"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/edtDialogAddTicket"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:gravity="start"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/add"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/edtDialogCancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/cancel" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

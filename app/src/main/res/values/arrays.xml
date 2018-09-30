@@ -4,4 +4,8 @@
         <item>details</item>
         <item>payment</item>
     </string-array>
+    <string-array name="scv_ticket_type">
+        <item>Open</item>
+        <item>Closed</item>
+    </string-array>
 </resources>
