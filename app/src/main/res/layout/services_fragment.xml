@@ -26,8 +26,8 @@
         app:scv_SegmentPaddingVertical="2dp"
         app:scv_SelectedIndex="0"
         app:scv_TextArray="@array/scv_ticket_type"
-        app:scv_TextNormalColor="@color/white"
-        app:scv_TextSelectedColor="@color/black"
+        app:scv_TextNormalColor="@color/black"
+        app:scv_TextSelectedColor="@color/white"
         app:scv_TextSize="@dimen/defaultTextSize" />
 
     <FrameLayout

@@ -145,7 +145,7 @@ public class HomeFragment extends BaseFragment implements HandleRetrofitResp, In
 
     @OnClick(R.id.imgHomeServices)
     public void onClickimgHomeServices() {
-        // TODO submit data to server...
+        addFragment(ServicesFragment.init(), true);
     }
 
     @OnClick(R.id.imgHomeVisitor)

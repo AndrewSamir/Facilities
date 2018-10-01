@@ -66,6 +66,17 @@ public class ServicesFragment extends BaseFragment implements HandleRetrofitResp
         openTicketList = new ArrayList<>();
         closedTicketList = new ArrayList<>();
 
+
+        Ticket ticket=new Ticket();
+        ticket.setStatus("In Progress");
+        ticket.setStatusid(1);
+        ticket.setTicketnumber("326");
+        ticket.setUnit("Unit ");
+
+        openTicketList.add(ticket);
+        openTicketList.add(ticket);
+        closedTicketList.add(ticket);
+
         closedAdapterTickets = new AdapterTickets(closedTicketList, getBaseActivity());
         openadApterTickets = new AdapterTickets(openTicketList, getBaseActivity());
 

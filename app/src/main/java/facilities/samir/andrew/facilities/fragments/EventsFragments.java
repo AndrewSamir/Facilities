@@ -47,6 +47,14 @@ public class EventsFragments extends BaseFragment implements HandleRetrofitResp 
         unbinder = ButterKnife.bind(this, view);
 
         modelEventsList = new ArrayList<>();
+        ModelEvents modelEvents = new ModelEvents();
+        modelEvents.setContent("content test ");
+        modelEvents.setDate("12-6-2018");
+        modelEvents.setTitle("Title");
+        modelEvents.setImage("https://www.google.com.eg/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwi7j8r-zOXdAhWQKlAKHZwRB-sQjRx6BAgBEAU&url=https%3A%2F%2Fwww.booking.com%2Fhotel%2Feg%2Fel-gouna-ms-red-sea.html&psig=AOvVaw0CQ-npzvQ2S_-Z2fneDkGu&ust=1538495629460045");
+
+        modelEventsList.add(modelEvents);
+        modelEventsList.add(modelEvents);
         adapterEvents = new AdapterEvents(modelEventsList, getBaseActivity());
         rvEvents.setLayoutManager(new LinearLayoutManager(getBaseActivity()));
         rvEvents.setAdapter(adapterEvents);

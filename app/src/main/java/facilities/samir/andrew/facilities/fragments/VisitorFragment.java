@@ -79,11 +79,11 @@ public class VisitorFragment extends BaseFragment implements HandleRetrofitResp 
 //            ((ImageView) findViewById(R.id.img_result_qr)).setImageBitmap(bmp);
                             imgVisitor.setImageBitmap(bmp);
 
-                            Intent share = new Intent(Intent.ACTION_SEND);
-                            share.setType("image/*");
-                            share.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///sdcard/path-to-your-image.jpg"));
-                            share.setPackage("com.whatsapp");//package name of the app
-                            startActivity(Intent.createChooser(share, "Share Image"));
+//                            Intent share = new Intent(Intent.ACTION_SEND);
+//                            share.setType("image/*");
+//                            share.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///sdcard/path-to-your-image.jpg"));
+//                            share.setPackage("com.whatsapp");//package name of the app
+//                            startActivity(Intent.createChooser(share, "Share Image"));
                         } catch (WriterException e) {
                             e.printStackTrace();
                         }
@@ -182,28 +182,6 @@ public class VisitorFragment extends BaseFragment implements HandleRetrofitResp 
         return new VisitorFragment();
     }
 
-    public void onClickApp(String pack, Bitmap bitmap) {
-        PackageManager pm = getBaseActivity().getPackageManager();
-        try {
-            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-            String path = MediaStore.Images.Media.insertImage(getBaseActivity().getContentResolver(), bitmap, "Title", null);
-            Uri imageUri = Uri.parse(path);
-
-            @SuppressWarnings("unused")
-            PackageInfo info = pm.getPackageInfo(pack, PackageManager.GET_META_DATA);
-
-            Intent waIntent = new Intent(Intent.ACTION_SEND);
-            waIntent.setType("image/*");
-            waIntent.setPackage("com.whatsapp");
-            waIntent.putExtra(android.content.Intent.EXTRA_STREAM, imageUri);
-            waIntent.putExtra(Intent.EXTRA_TEXT, pack);
-            getBaseActivity().startActivity(Intent.createChooser(waIntent, "Share with"));
-        } catch (Exception e) {
-            Log.e("Error on sharing", e + " ");
-            Toast.makeText(getBaseActivity(), "App not Installed", Toast.LENGTH_SHORT).show();
-        }
-    }
     //endregion
 
 }
