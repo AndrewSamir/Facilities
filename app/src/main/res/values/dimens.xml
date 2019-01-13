@@ -2,4 +2,9 @@
 <resources>
     <dimen name="viewHeight">@dimen/_30sdp</dimen>
     <dimen name="defaultTextSize">@dimen/_12sdp</dimen>
+    <dimen name="_15px">@dimen/_12sdp</dimen>
+    <dimen name="_18px">@dimen/_14sdp</dimen>
+    <dimen name="_20px">@dimen/_15sdp</dimen>
+    <dimen name="_25px">@dimen/_22sdp</dimen>
+    <dimen name="_28px">@dimen/_25sdp</dimen>
 </resources>

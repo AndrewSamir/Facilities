@@ -54,6 +54,10 @@ public class RegisterActivity extends Activity implements Validator.ValidationLi
     @BindView(R.id.edtNameRegister)
     EditText edtNameRegister;
 
+    @NotEmpty
+    @BindView(R.id.edtLastNameRegister)
+    EditText edtLastNameRegister;
+
     @Email
     @BindView(R.id.edtMailRegister)
     EditText edtMailRegister;
@@ -62,17 +66,11 @@ public class RegisterActivity extends Activity implements Validator.ValidationLi
     @BindView(R.id.edtPhoneRegister)
     EditText edtPhoneRegister;
 
-    @NotEmpty
-    @BindView(R.id.edtBirthdate)
-    TextView edtBirthDate;
 
     @Password
     @BindView(R.id.edtPasswordRegister)
     EditText edtPasswordRegister;
 
-    @ConfirmPassword
-    @BindView(R.id.edtConfirmPasswordRegister)
-    EditText edtConfirmPasswordRegister;
 
     //endregion
     @Override
@@ -97,17 +95,8 @@ public class RegisterActivity extends Activity implements Validator.ValidationLi
         validator.validate();
     }
 
-    @OnClick(R.id.tvHaveAccountRegister)
-    public void onClickTvHaveAccountRegister() {
-        startActivity(new Intent(this, LoginActivity.class));
-        finish();
-    }
 
-    @OnClick(R.id.edtBirthdate)
-    public void onClickedtBirthdate() {
-        edtBirthDate.setError(null);
-        createDialog();
-    }
+
     //endregion
 
     //region validation
@@ -154,10 +143,9 @@ public class RegisterActivity extends Activity implements Validator.ValidationLi
                         RegestrationData regestrationData = new RegestrationData();
 
                         ProfileData profileData = new ProfileData();
-                        profileData.setDisplayName(edtNameRegister.getText().toString());
+                        profileData.setDisplayName(edtNameRegister.getText().toString() + " " + edtLastNameRegister.getText().toString());
                         profileData.setMail(edtMailRegister.getText().toString());
                         profileData.setMobile(edtPhoneRegister.getText().toString());
-                        profileData.setBirthDate(edtBirthDate.getText().toString());
 
                         regestrationData.setProfileData(profileData);
                         HandleAddDataToFirebase.getInstance(RegisterActivity.this).callAddProfileData("callAddProfileData", regestrationData);
@@ -188,44 +176,6 @@ public class RegisterActivity extends Activity implements Validator.ValidationLi
     @Override
     public void onDataAddedRepeated(String flag) {
 
-    }
-
-    private void createDialog() {
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.custom_date_paker);
-
-        final DatePicker datePicker = dialog.findViewById(R.id.datePicker2);
-
-        Button cancel = dialog.findViewById(R.id.cancelAbsent);
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
-        });
-
-        Button continueButton = dialog.findViewById(R.id.conToAbsent);
-        continueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int day = datePicker.getDayOfMonth();
-                int month = datePicker.getMonth();
-                int year = datePicker.getYear();
-
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(year, month, day, 0, 0, 0);
-                long startTime = calendar.getTimeInMillis();
-                String date = Long.toString(startTime);
-                date = date.substring(0, date.length() - 3);
-                date = date + "000";
-                String dateShow = Integer.toString(day) + "-" + Integer.toString(month + 1) + "-" + Integer.toString(year);
-
-                edtBirthDate.setText(dateShow);
-                dialog.dismiss();
-
-            }
-        });
-        dialog.show();
     }
 
     //endregion

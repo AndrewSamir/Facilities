@@ -66,7 +66,7 @@ public class LoginActivity extends Activity implements Validator.ValidationListe
 
     @OnClick(R.id.tvRegisterLogin)
     public void onClick() {
-        startActivity(new Intent(this, RegisterActivity.class));
+        startActivity(new Intent(this, ForgetPasswordActivity.class));
         finish();
     }
     //endregion

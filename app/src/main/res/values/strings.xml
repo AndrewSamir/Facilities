@@ -23,4 +23,24 @@
     <string name="events">Events</string>
     <string name="my_tickets">My Tickets</string>
     <string name="add">Add Ticket</string>
+    <string name="last_name">Last Name</string>
+    <string name="enter_your_last_name_here">Enter your last name here</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="enter_your_mobile_number_here">Enter your mobile number here</string>
+    <string name="e_mail_address">E-mail Address</string>
+    <string name="enter_your_e_mail_address_here">Enter your e-mail address here</string>
+    <string name="password">Password</string>
+    <string name="enter_your_password_here">Enter your password here</string>
+    <string name="enter_your_first_name_here">Enter your first name here</string>
+    <string name="first_name">First Name</string>
+    <string name="done">Done</string>
+    <string name="forget_your_password">Forget your password ?!</string>
+    <string name="or">or</string>
+    <string name="title_activity_forget_password">Accounting</string>
+    <string name="title_activity_before_login">BeforeLoginActivity</string>
+    <string name="registration">Registration</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login">Login</string>
+    <string name="lorem_ipsum_dolor_sit_amit_consecteture">lorem ipsum dolor sit amit, consecteture</string>
+    <string name="orchestra_projects">Orchestra Projects</string>
 </resources>

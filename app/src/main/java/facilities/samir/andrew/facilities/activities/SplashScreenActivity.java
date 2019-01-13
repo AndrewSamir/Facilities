@@ -11,10 +11,10 @@ public class SplashScreenActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (FirebaseAuth.getInstance().getCurrentUser() == null)
+/*        if (FirebaseAuth.getInstance().getCurrentUser() == null)
             startActivity(new Intent(this, RegisterActivity.class));
-        else
-            startActivity(new Intent(this, MainActivity.class));
+        else*/
+        startActivity(new Intent(this, BeforeLoginActivity.class));
         finish();
     }
 }

@@ -43,6 +43,24 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <activity
+            android:name=".activities.ForgetPasswordActivity"
+            android:label="@string/title_activity_forget_password"
+            android:parentActivityName=".activities.LoginActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="facilities.samir.andrew.facilities.activities.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".activities.BeforeLoginActivity"
+            android:label="@string/title_activity_before_login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

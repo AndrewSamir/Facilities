@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_60sdp"
+        android:background="@drawable/button_background_login"
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/registration"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_25px" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:gravity="center"
+        android:text="@string/already_have_an_account"
+        android:textColor="@color/colorTextHint" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/button_background_transparent"
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/login"
+        android:textColor="@color/colorBtnActive"
+        android:textSize="@dimen/_25px" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:text="@string/e_mail_address"
+        android:textColor="@color/colorTextTitle"
+        android:textSize="@dimen/_20px" />
+
+    <EditText
+        android:id="@+id/edtUserNameLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:hint="@string/enter_your_e_mail_address_here"
+        android:inputType="textEmailAddress"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:textColor="@color/colorTextTitle"
+        android:textColorHint="@color/colorTextHint"
+        android:textSize="@dimen/_20px" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@color/colorTextHint" />
+</LinearLayout>
